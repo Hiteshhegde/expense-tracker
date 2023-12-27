@@ -1,9 +1,23 @@
 <script setup>
 import { ref } from 'vue';
+import { useTransactionStore } from '@/stores/transaction';
+
+const transactionStore = useTransactionStore();
 
 const transaction_description = ref(null);
 const transaction_amount = ref(null);
 const transcation_type = ref(null);
+
+const transaction = {
+    description: transaction_description.value,
+    amount: transaction_amount.value,
+    type: transcation_type.value
+}
+
+const onAdd = (e) => {
+    e.preventDefault();
+    transactionStore.addTransaction(transaction)
+}
 
 </script>
 <template>
@@ -22,7 +36,7 @@ const transcation_type = ref(null);
                     <option value="expense">Expense</option>
                 </select>
             </div>
-            <button class="add">Add</button>
+            <button class="add" onclick="onAdd">Add</button>
         </form>
     </div>
 </template>

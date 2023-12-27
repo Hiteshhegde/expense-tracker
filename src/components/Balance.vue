@@ -1,12 +1,13 @@
 <script setup>
-
+import { useBalanceStore } from '@/stores/balance';
+const store = useBalanceStore();
 </script>
 
 <template>
     <div class="balance-card">
         <div class="balance-title">Balance</div>
         <div class="balance-text">Remaining Balance:</div>
-        <div class="balance">$965.00</div>
+        <div class="balance">${{ store.balance }}</div>
     </div>
 </template>
 
@@ -45,4 +46,4 @@
     padding: 5px 0px; 
     border-bottom: 1px dashed;
 }
-</style>
+</style>@/stores/transaction

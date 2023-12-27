@@ -1,4 +1,7 @@
 <script setup>
+import { useBalanceStore } from '@/stores/balance';
+
+const store = useBalanceStore();
 
 </script>
 
@@ -10,12 +13,12 @@
         <div class="income-expense">
             <div class="income">
                 <div class="income-text">Income:</div>
-                <div class="income-amount">$2411.00</div>
+                <div class="income-amount">${{  store.getIncome }}</div>
             </div>
             <div class="pipe"></div>
             <div class="expense">
                 <div class="expense-text">Expense:</div>
-                <div class="expense-amount">$1390.00</div>
+                <div class="expense-amount">${{ store.getExpense }}</div>
             </div>
         </div>
     </div>
@@ -99,4 +102,4 @@
 
 
 
-</style>
+</style>@/stores/transaction

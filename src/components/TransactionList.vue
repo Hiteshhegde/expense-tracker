@@ -1,8 +1,12 @@
 <script setup>
 import Transaction from './Transaction.vue';
 import { ref } from 'vue';
+import { useTransactionStore } from '@/stores/transaction';
 
-const transactions = ref([
+const store = useTransactionStore();
+
+
+const transactionList = ref([
     {
         description: "Direct Deposit-N9831",
         amount: 2411.00,
@@ -35,7 +39,7 @@ const transactions = ref([
     <div class="transaction-list">
         <div class="list-title">Latest Transactions</div>
         <div class="list">
-            <div v-for="transaction in transactions">
+            <div v-for="transaction in store.transactions">
                 <Transaction :description="transaction.description" 
                             :amount="transaction.amount" 
                             :date="transaction.date"
